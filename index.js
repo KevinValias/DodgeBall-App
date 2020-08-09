@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // eslint-disable-next-line max-classes-per-file
 const arrOfPeople = [
   {
@@ -62,7 +63,44 @@ class Player {
     this.index = index
   }
   // 58-63 creates player //
+
+// eslint-disable-next-line no-unused-expressions
+addPlayer () {
+  const uniqueId = this.id
+  const uniqueId = this.name
+  
+  const listPlayers = gwtElementById('players')
+  const li = document.createElement('li')
+  li.setAttribute('id', this.index)
+
+  const button1 = document.createElement('button')
+  button1.innerHTML = "Red Team"
+  button1.addEventListener('click', function () {
+    addTeammate(uniqueId, uniqueName, 'Red', 'Red Rogue', this.index)
+  })
+
+  const button2 = document.createElement('button')
+  button2.innerHTML = "Blue Team"
+  button2.addEventListener(click, function () {
+    addTeammate(uniqueId, uniqueName, 'Blue', 'Blue Rift', this.index)
+  })
+
+  listPlayers.append(li)
+  li.appendChild(
+    document.createTextNode(
+      'Player Name: ${this.name}
+      Player Number: ${this.id}'
+    )
+  )
+  li.appendChild(button1)
+  li.appendChild(button2)
+ }
 }
+
+
+
+
+
 class blueTeammate {
   constructor() {}
 }
@@ -72,6 +110,7 @@ class redTeammate {
 
 const listPeopleChoices = () => {
   const listElement = document.getElementById("people")
+
   arrOfPeople.map((person) => {
     const li = document.createElement("li")
     const button = document.createElement("button")

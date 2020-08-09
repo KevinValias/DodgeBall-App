@@ -1,5 +1,7 @@
 /* eslint-disable no-undef */
 // eslint-disable-next-line max-classes-per-file
+const assert = require('assert')
+
 const arrOfPeople = [
   {
     id: 2,
@@ -59,19 +61,33 @@ const blueTeam = []
 const redTeam = []
 
 class Player {
-  constructor(id, name, index) {
+  constructor(
+    id,
+    name,
+    index,
+    canThrowBall,
+    canDodgeBall,
+    hasPaid,
+    isHealthy,
+    yearsExperience
+  ) {
     this.id = id
     this.name = name
     this.index = index
+    this.canThrowBall = canThrowBall
+    this.canDodgeBall = canDodgeBall
+    this.hasPaid = hasPaid
+    this.isHealthy = isHealthy
+    this.yearsExperience = yearsExperience
   }
-  // 58-63 creates player //
+ 
 
 // eslint-disable-next-line no-unused-expressions
 addPlayer () {
   const uniqueId = this.id
-  const uniqueId = this.name
+  const uniqueName= this.name
   
-  const listPlayers = gwtElementById('players')
+  const listPlayers = getElementById('players')
   const li = document.createElement('li')
   li.setAttribute('id', this.index)
 
@@ -90,8 +106,8 @@ addPlayer () {
   listPlayers.append(li)
   li.appendChild(
     document.createTextNode(
-      'Player Name: ${this.name}
-      Player Number: ${this.id}'
+      'Player Name: ${this.name}'
+      'Player Number: ${this.id}'
     )
   )
   li.appendChild(button1)
@@ -99,9 +115,27 @@ addPlayer () {
  }
 }
 
-class Teammate extends player { 
-  constructor(id, name, color, mascot) {
-    super(id, name)
+class Teammate extends Player {
+  constructor(
+    id,
+    name,
+    color,
+    mascot,
+    canThrowBall,
+    canDodgeBall,
+    hasPaid,
+    isHealthy,
+    yearsExperience
+  ) {
+    super(
+      id,
+      name,
+      canThrowBall,
+      canDodgeBall,
+      hasPaid,
+      isHealthy,
+      yearsExperience
+    )
     this.color = color
     this.mascot = mascot
   }
@@ -116,10 +150,9 @@ class Teammate extends player {
         Player Number: &{this.id}
         Team: ${this.color}
         Mascot: ${this.mascot}'
-      )
     )
-
-  }
+  )
+}
   addRedTeam() {
     const listBlue = document.getElementById('red')
     const li = document.createElement('li')
@@ -127,32 +160,31 @@ class Teammate extends player {
     li.appendChild(
       document.createTextNode(
         'Player Name: ${this.name}
-        Player Number: &{this.id}
+        Player Number: ${this.id}
         Team: ${this.color}
         Mascot: ${this.mascot}'
-      )
     )
-  }
+  )
 }
 
-class blueTeammate {
-  constructor() {}
-}
-class redTeammate {
-  constructor() {}
-}
+// class blueTeammate {
+//   constructor() {}
+// }
+// class redTeammate {
+//   constructor() {}
+// }
 
 
 
 const listPeopleChoices = () => {
   const listElement = document.getElementById("people")
-
-  arrOfPeople.map((person) => {
+  arrOfPeople.map((person, index) => {
     const li = document.createElement("li")
+    li.setAttribute('id', index)
     const button = document.createElement("button")
     button.innerHTML = "Make Player"
     button.addEventListener("click", function () {
-      makePlayer(person.id)
+      makePlayer(person.id,person.name,li.id)
     })
     li.appendChild(button)
     li.appendChild(

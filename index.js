@@ -168,7 +168,16 @@ const makePlayer = (id, name, i) => {
   const li = document.getElementById(i)
   h1.removeChild(li)
 }
-
+const addTeammate = (id, name, color, mascot, i) => {
+  if (color === "Blue") {
+    new Teammate(id, name, color, mascot).addBlueTeammate()
+  } else {
+    new Teammate(id, name, color).addRedTeammate()
+  }
+  const h4 = document.getElementById("players")
+  const li = document.getElementById(i)
+  h4.removeChild(li)
+}
 
 
 module.exports = {

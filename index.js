@@ -162,6 +162,19 @@ const listPeopleChoices = () => {
   })
 }
 
-const makePlayer = (id) => {
-  console.log(`li ${id} was clicked!`)
+const makePlayer = (id, name, i) => {
+  new Player(id, name).addPlayer()
+  const h1 = document.getElementById("people")
+  const li = document.getElementById(i)
+  h1.removeChild(li)
+}
+
+
+
+module.exports = {
+  Player,
+  Teammate,
+  addTeammate,
+  makePlayer,
+  listPeopleChoices,
 }

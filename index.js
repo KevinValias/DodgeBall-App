@@ -52,6 +52,8 @@ const arrOfPeople = [
   },
 ]
 
+
+
 const listOfPlayers = []
 const blueTeam = []
 const redTeam = []
@@ -97,9 +99,41 @@ addPlayer () {
  }
 }
 
+class Teammate extends player { 
+  constructor(id, name, color, mascot) {
+    super(id, name)
+    this.color = color
+    this.mascot = mascot
+  }
 
+  addBlueTeam() {
+    const listBlue = document.getElementById('blue')
+    const li = document.createElement('li')
+    listBlue.append(li)
+    li.appendChild(
+      document.createTextNode(
+        'Player Name: ${this.name}
+        Player Number: &{this.id}
+        Team: ${this.color}
+        Mascot: ${this.mascot}'
+      )
+    )
 
-
+  }
+  addRedTeam() {
+    const listBlue = document.getElementById('red')
+    const li = document.createElement('li')
+    listBlue.append(li)
+    li.appendChild(
+      document.createTextNode(
+        'Player Name: ${this.name}
+        Player Number: &{this.id}
+        Team: ${this.color}
+        Mascot: ${this.mascot}'
+      )
+    )
+  }
+}
 
 class blueTeammate {
   constructor() {}
@@ -107,6 +141,8 @@ class blueTeammate {
 class redTeammate {
   constructor() {}
 }
+
+
 
 const listPeopleChoices = () => {
   const listElement = document.getElementById("people")
